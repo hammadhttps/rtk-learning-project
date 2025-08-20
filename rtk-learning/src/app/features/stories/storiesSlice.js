@@ -44,7 +44,7 @@ const storiesSlice = createSlice({
   name: "stories",
   initialState,
   reducers: {
-    storyviewd: (state, action) => {
+    storyViewed: (state, action) => {
       const story = state.stories.find((story) => story.id === action.payload);
       if (story) {
         story.hasUnseen = false;
@@ -53,6 +53,6 @@ const storiesSlice = createSlice({
   },
 });
 
-export const { storyviewd } = storiesSlice.actions;
+export const { storyViewed } = storiesSlice.actions;
 export default storiesSlice.reducer;
-export const selectAllstories = (state) => state.stories.stories;
+export const selectAllStories = (state) => state.stories.stories;
