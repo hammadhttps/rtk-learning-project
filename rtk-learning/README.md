@@ -1,12 +1,43 @@
-# React + Vite
+## Redux Toolkit Learning Project (React + Vite + Tailwind)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple learning project to practice state management with Redux Toolkit. It shows how to use `configureStore`, `createSlice`, reducers, actions, and selectors in a small React app.
 
-Currently, two official plugins are available:
+### What this project demonstrates
+- **configureStore**: Combines slice reducers in `src/store/store.js`.
+- **Slices**: Feature-based state using `createSlice`.
+  - `src/app/features/auth/authSlice.js`
+  - `src/app/features/posts/postSlice.js`
+  - `src/app/features/stories/storiesSlice.js`
+- **Reducers & actions**: Defined in each slice and exported for use in components.
+- **Selectors**: Simple functions to read from the store (e.g., `selectCurrentUser`, `selectAllposts`, `selectAllStories`).
+- **UI**: React components styled with Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tech stack
+- React + Vite
+- Redux Toolkit + React Redux
+- Tailwind CSS
 
-## Expanding the ESLint configuration
+### Run locally
+1. Install dependencies
+   - `npm install`
+2. Start the dev server
+   - `npm run dev`
+3. Build for production (optional)
+   - `npm run build`
+4. Preview production build (optional)
+   - `npm run preview`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Project structure (key files)
+- `src/store/store.js`: Creates the Redux store with `configureStore` and registers slice reducers.
+- `src/app/features/auth/authSlice.js`: Auth slice and `selectCurrentUser` selector.
+- `src/app/features/posts/postSlice.js`: Posts slice with actions like `postAdded`, `postLiked`, `commentAdded`.
+- `src/app/features/stories/storiesSlice.js`: Stories slice and `selectAllStories` selector.
+- `src/main.jsx`: Wraps the app in `<Provider store={store}>`.
+
+### How to add a new slice (simple steps)
+1. Create a new file under `src/app/features/<feature>/<feature>Slice.js`.
+2. Use `createSlice({ name, initialState, reducers })` and export the actions and reducer.
+3. Register the reducer in `src/store/store.js` under `reducer: { ... }`.
+4. Create selectors to read data from the slice state.
+
+That’s it — this project is just for learning Redux Toolkit basics with a small, readable setup.
