@@ -9,8 +9,8 @@ const initialState = {
 const postSlice = createSlice({
   name: "posts",
   initialState,
-  postAdded: {
-    reducers: {
+  reducers: {
+    postAdded: {
       reducer(state, action) {
         state.posts.unshift(action.payload);
       },
@@ -34,14 +34,12 @@ const postSlice = createSlice({
         };
       },
     },
-
     postLiked: (state, action) => {
       const post = state.posts.find((post) => post.id === action.payload);
       if (post) {
         post.likes++;
       }
     },
-
     commentAdded: (state, action) => {
       const { postId, comment } = action.payload;
       const post = state.posts.find((post) => post.id === postId);
